@@ -1,14 +1,9 @@
-import React, { useState } from "react";
-import Quiz from "./Quiz";
+import React from 'react'
+import { quizdata } from '../data/quizdata'
 
-export default function Head() {
-  const [show, setShow] = useState(false);
-
-  const ShowName = () => {
-    setShow(!show);
-  };
-
+export default function StartPage({setStart}) {
   return (
+    
     <div>
       {/* navbar */}
       <nav class="navbar bg-dark">
@@ -22,15 +17,17 @@ export default function Head() {
           </a>
         </div>
       </nav>
-
       <div className="d-flex justify-content-center mt-4">
-        <div class="card" style={{ width: "50rem" }}>
+        <div class="card" style={{ width: "48rem" }}>
           <div
             class="card-body rounded"
             style={{
-              height: 650,
+              backgroundRepeat:'no-repeat',
+              backgroundSize:'cover',
+              backgroundPosition:'center',
+              height: 500,
               backgroundImage:
-                "url('https://media.istockphoto.com/id/1128222520/photo/map-of-united-states-of-america-on-national-flag-background-3d-illustration.jpg?s=1024x1024&w=is&k=20&c=MOy-zRT0s_dxwkGZpV_XoXqqXZL2LolZXMmM9M5cXAU=')",
+                "url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg')",
             }}
           >
             <div
@@ -39,16 +36,15 @@ export default function Head() {
             >
               <div class="card-body">
                 <h5 class="card-title fs-2">
-                  What's That <br /> Symobol Mean?
+                  Information about USA
                 </h5>
-                {!show && <button className="btn btn-secondary fs-5" onClick={ShowName}>Start</button>}
-                {show && <Quiz />}
+                <button className="btn btn-secondary fs-5" onClick={()=>(setStart(false))}>Start</button>
               </div>
-              <h5>5 Questions</h5>
+              <h5>{quizdata.length} Questions</h5>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
