@@ -1,27 +1,47 @@
-export  const quizdata = [
+export let questions = [
   {
-    question: "What is the capital of France?",
-    options: ["Berlin", "Madrid", "Paris", "Rome"],
-    answer: "Paris"
+    questionText: "What is the capital of America?",
+    options: [
+      { id: 0, optionsText: "New York City", isCorrect: false },
+      { id: 1, optionsText: "Bostan", isCorrect: false },
+      { id: 2, optionsText: "Santa Fe", isCorrect: false },
+      { id: 3, optionsText: "Washington DC", isCorrect: true },
+    ],
   },
   {
-    question: "Which planet is known as the Red Planet?",
-    options: ["Earth", "Jupiter", "Mars", "Venus"],
-    answer: "Mars"
+    questionText: "What year was the Constitution of America written?",
+    options: [
+      { id: 0, optionsText: "1787", isCorrect: true },
+      { id: 1, optionsText: "1776", isCorrect: false },
+      { id: 2, optionsText: "1774", isCorrect: false },
+      { id: 3, optionsText: "1826", isCorrect: false },
+    ],
   },
   {
-    question: "What is the largest ocean on Earth?",
-    options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-    answer: "Pacific Ocean"
+    questionText: "Who was the second president of US?",
+    options: [
+      { id: 0, optionsText: "John Adams", isCorrect: true },
+      { id: 1, optionsText: "Paul Revere", isCorrect: false },
+      { id: 2, optionsText: "Thomas Jefferson", isCorrect: false },
+      { id: 3, optionsText: "Benjamin Franklin", isCorrect: false },
+    ],
   },
   {
-    question: "Who wrote 'Hamlet'?",
-    options: ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
-    answer: "William Shakespeare"
+    questionText: "What is the largest state of US?",
+    options: [
+      { id: 0, optionsText: "California", isCorrect: false },
+      { id: 1, optionsText: "Alaska", isCorrect: true },
+      { id: 2, optionsText: "Texas", isCorrect: false },
+      { id: 3, optionsText: "Montana", isCorrect: false },
+    ],
   },
   {
-    question: "What is the smallest prime number?",
-    options: ["0", "1", "2", "3"],
-    answer: "2"
+    questionText: "Which of the following counteries do not border the US?",
+    options: [
+      { id: 0, optionsText: "Canada", isCorrect: false },
+      { id: 1, optionsText: "Russia", isCorrect: true },
+      { id: 2, optionsText: "Cuba", isCorrect: false },
+      { id: 3, optionsText: "Mexico", isCorrect: false },
+    ],
   }
 ];
