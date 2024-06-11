@@ -1,33 +1,16 @@
 import React from "react";
-import { questions } from "../data/quizData";
-import { useState } from "react";
 
-export default function Quiz() {
-  let [showFinalResults, setShowFinalResults] = useState(false);
-  let [score, setScore] = useState(0);
-  let [currentQuestion, setCurrentQuestion] = useState(0);
-
-  const handleOptionClick = (isCorrect) => {
-    if (isCorrect) {
-      setScore(score+1);
-    }
-    if(currentQuestion+1<questions.length){
-      setCurrentQuestion(currentQuestion+1);
-    }
-    else {
-      setShowFinalResults(true);
-    }
-  };
-
-  const handlePlayAgain = () => {
-    setScore(0);
-    setCurrentQuestion(0);
-    setShowFinalResults(false);
-  };
-
+export default function Quiz({
+  quizdata,
+  nextQuestion,
+  handleNext,
+  handleAnswer,
+  score,
+  selectedOption,
+}) {
+  const quest = quizdata[nextQuestion];
   return (
     <div className="container">
-      {/* headings */}
       <h1 className="mt-4 text-center">
         USA Quiz{" "}
         <i>
@@ -35,34 +18,58 @@ export default function Quiz() {
         </i>
       </h1>
       <h3 className="text-center">Score: {score}</h3>
-
-      {/* for next page navigation */}
-      {showFinalResults ? (
-        <div className="container">
-          <div className="d-flex justify-content-center">
-            <div
-              className="card text-center mb-3 bg-black text-white"
-              style={{ width: "40rem" }}
-            >
-              <div className="card-body">
-                <h5 className="card-title text-white">Final Results</h5>
-                <h5 className="card-title text-white">
-                  {score} out of {questions.length} correct - (
-                  {(score / questions.length) * 100}%)
-                </h5>
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={handlePlayAgain}
-                >
-                  Play Again
-                </button>
-              </div>
-            </div>
+      <div>
+        <h2 className="text-center">
+          {nextQuestion + 1}. {quest.question}
+        </h2>
+        <div className="d-flex flex-column">
+          <div
+            className="options-sec card mb-3 text-white align-self-center"
+            style={{ width: "35rem" }}
+            
+          >
+            {quest.options.map((option, index) => (
+              <button
+                className={`
+              option-btn
+              ${
+                selectedOption
+                  ? option === quest.answer
+                    ? "correct"
+                    : option === selectedOption
+                    ? "incorrect"
+                    : ""
+                  : ""
+              } text-black align-self-center mt-3 mb-3
+            `} 
+                style={{ width: "20rem" }}
+                key={index}
+                onClick={() => handleAnswer(option)}
+                disabled={selectedOption !== null}
+              >
+                {option}
+              </button>
+            ))}
           </div>
+          <button
+            type="button"
+            className="btn btn-dark align-self-center"
+            style={{ width: "10rem" }}
+            onClick={handleNext}
+            disabled={!selectedOption}
+          >
+            Next
+          </button>
+          <span className="align-self-center">
+            {nextQuestion + 1} of {quizdata.length} Question
+          </span>
         </div>
-      ) : (
-        <div className="d-flex justify-content-center">
+      </div>
+    </div>
+  );
+}
+
+/*
           <div
             className="card text-center mb-3 bg-black text-white"
             style={{ width: "40rem" }}
@@ -89,9 +96,5 @@ export default function Quiz() {
             </div>
           </div>
         </div>
-      )}
 
-      {/* quiz Card */}
-    </div>
-  );
-}
+*/
