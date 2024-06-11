@@ -5,7 +5,6 @@ export default function StartPage({setStart}) {
   return (
     
     <div>
-      {/* navbar */}
       <nav class="navbar bg-dark">
         <div class="container">
           <a class="navbar-brand text-white" href="#">
